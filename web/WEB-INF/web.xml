@@ -5,12 +5,12 @@
          version="4.0">
 
     <servlet>
-    <servlet-name>FirstServlet</servlet-name>
-    <servlet-class>FirstServlet.FirstServlet</servlet-class>
+    <servlet-name>ProductController</servlet-name>
+    <servlet-class>Controllers.ProductController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-    <servlet-name>FirstServlet</servlet-name>
-    <url-pattern>/first</url-pattern>
+    <servlet-name>ProductController</servlet-name>
+    <url-pattern>/DirtyDans_war_exploded</url-pattern>
     </servlet-mapping>
 </web-app>

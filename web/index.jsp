@@ -19,10 +19,10 @@
         <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="products.jsp">Products</a>
+        <a class="nav-link" href="productsView.jsp">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="cart.jsp">Cart</a>
+        <a class="nav-link" href="cartView.jsp">Cart</a>
       </li>
     </ul>
   </div>
@@ -32,7 +32,7 @@
   <div class="jumbotron">
     <h1>DIRTY DAN'S DISCOUNT DOORKNOBS</h1>
     <p class="lead">Dirty Dan's offers the deepest discounts on doorknobs and doorknob accesories in downtown Delafield </p>
-    <a class="btn btn-lg btn-primary" href="products.jsp" role="button">View Products &raquo;</a>
+    <a class="btn btn-lg btn-primary" href="productsView.jsp" role="button">View Products &raquo;</a>
   </div>
 </main>
 </html>

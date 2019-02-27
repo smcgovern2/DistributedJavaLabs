@@ -1,5 +1,7 @@
-<%@ page import="FirstServlet.Inventory" %>
-<%@ page import="FirstServlet.Product" %>
+<%@ page import="Models.Inventory" %>
+<%@ page import="Models.ProductModel" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.util.List" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,10 +23,10 @@
         <a class="nav-link" href="index.jsp">Home</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="products.jsp">Products<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="productsView.jsp">Products<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="cart.jsp">Cart</a>
+        <a class="nav-link" href="cartView.jsp">Cart</a>
       </li>
     </ul>
   </div>
@@ -38,14 +40,21 @@
     <div class="row">
         
         <%
-            for (Product p : Inventory.INVENTORY.getProductList()) {
-                out.println("<div class=\"col-sm-4\">");
-                out.println("<div class=\"card\">");
-                out.println("<div class=\"card-body\">");
-                out.println("<h5 class=\"card-title\">" + p.getName() + "</h5>");
-                out.println("<p class=\"card-text\">" + p.getShortDesc() + "</p>");
-                out.println("<a href=\"details.jsp\" class=\"btn btn-primary\">Details</a></div></div></div>");
-            }
+
+
+            List<ProductModel> inv =
+                    (List<ProductModel>) request.getAttribute("inv");
+            for (ProductModel Product : inv){
+
+//            List<ProductModel> products = (List<ProductModel>) request.getAttribute("inv");
+//            for (ProductModel p : products) {
+//                out.println("<div class=\"col-sm-4\">");
+//                out.println("<div class=\"card\">");
+//                out.println("<div class=\"card-body\">");
+//                out.println("<h5 class=\"card-title\">" + p.getName() + "</h5>");
+//                out.println("<p class=\"card-text\">" + p.getShortDesc() + "</p>");
+//                out.println("<a href=\"detailsView.jsp\" class=\"btn btn-primary\">Details</a></div></div></div>");
+////            }
         %>      
 
 
@@ -57,7 +66,7 @@
             <%--<div class="card-body">--%>
               <%--<h5 class="card-title">Brass Knob</h5>--%>
               <%--<p class="card-text">A knob made of premium brass</p>--%>
-              <%--<a href="details.jsp" class="btn btn-primary">Details</a>--%>
+              <%--<a href="detailsView.jsp" class="btn btn-primary">Details</a>--%>
             <%--</div>--%>
           <%--</div>--%>
         <%--</div>--%>
@@ -66,7 +75,7 @@
             <%--<div class="card-body">--%>
               <%--<h5 class="card-title">Glass Knob</h5>--%>
               <%--<p class="card-text">A luxurious glass knob</p>--%>
-              <%--<a href="details.jsp" class="btn btn-primary">Details</a>--%>
+              <%--<a href="detailsView.jsp" class="btn btn-primary">Details</a>--%>
             <%--</div>--%>
           <%--</div>--%>
         <%--</div>--%>
@@ -75,7 +84,7 @@
               <%--<div class="card-body">--%>
                 <%--<h5 class="card-title">Stainless Steel Knob</h5>--%>
                 <%--<p class="card-text">A sleek modern knob</p>--%>
-                <%--<a href="details.jsp" class="btn btn-primary">Details</a>--%>
+                <%--<a href="detailsView.jsp" class="btn btn-primary">Details</a>--%>
               <%--</div>--%>
             <%--</div>--%>
           <%--</div>--%>

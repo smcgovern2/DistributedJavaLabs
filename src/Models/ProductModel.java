@@ -1,18 +1,18 @@
-package FirstServlet;
+package Models;
 
-public class Product {
+public class ProductModel {
 
     private String name;
     private String shortDesc;
     private String longDesc;
 
-    public Product(String name, String shortDesc, String longDesc) {
+    public ProductModel(String name, String shortDesc, String longDesc) {
         this.name = name;
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
     }
 
-    public Product() {
+    public ProductModel() {
     }
 
     public String getName() {

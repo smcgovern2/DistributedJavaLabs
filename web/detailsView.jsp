@@ -19,10 +19,10 @@
         <a class="nav-link" href="index.jsp">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="products.jsp">Products</a>
+        <a class="nav-link" href="productsView.jsp">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="cart.jsp">Cart</a>
+        <a class="nav-link" href="cartView.jsp">Cart</a>
       </li>
     </ul>
   </div>
@@ -33,7 +33,7 @@
         <h1 class="display-4">Product Name</h1>
         <span style="font-size:30px; padding:75px; background:white; border-style: solid; border-width: 2px; border-color:black; line-height:200px;">Product Image</span>
         <p class="lead">Product Price</p>
-        <a href="cart.jsp" class="btn btn-primary">Add to Cart</a>
+        <a href="cartView.jsp" class="btn btn-primary">Add to Cart</a>
         <br>
         <br>
         <h2>Description</h2>
