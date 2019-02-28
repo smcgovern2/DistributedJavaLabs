@@ -1,18 +1,18 @@
 package Models;
 
-public class ProductModel {
+public class Product {
 
     private String name;
     private String shortDesc;
     private String longDesc;
 
-    public ProductModel(String name, String shortDesc, String longDesc) {
+    public Product(String name, String shortDesc, String longDesc) {
         this.name = name;
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
     }
 
-    public ProductModel() {
+    public Product() {
     }
 
     public String getName() {

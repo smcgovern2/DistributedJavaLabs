@@ -1,7 +1,9 @@
 <%@ page import="Models.Inventory" %>
-<%@ page import="Models.ProductModel" %>
+<%@ page import="Models.Product" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Iterator" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,7 +25,7 @@
         <a class="nav-link" href="index.jsp">Home</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="productsView.jsp">Products<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="productsView">Products<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="cartView.jsp">Cart</a>
@@ -42,52 +44,31 @@
         <%
 
 
-            List<ProductModel> inv =
-                    (List<ProductModel>) request.getAttribute("inv");
-            for (ProductModel Product : inv){
-
-//            List<ProductModel> products = (List<ProductModel>) request.getAttribute("inv");
-//            for (ProductModel p : products) {
+            ArrayList<Product> productList = (ArrayList<Product>) request.getAttribute("productList");
+//            for (Product p : productList.getProductList()){
+//
 //                out.println("<div class=\"col-sm-4\">");
 //                out.println("<div class=\"card\">");
 //                out.println("<div class=\"card-body\">");
 //                out.println("<h5 class=\"card-title\">" + p.getName() + "</h5>");
 //                out.println("<p class=\"card-text\">" + p.getShortDesc() + "</p>");
 //                out.println("<a href=\"detailsView.jsp\" class=\"btn btn-primary\">Details</a></div></div></div>");
-////            }
-        %>      
+//         }
+
+            Iterator it = productList.iterator();
+            while (it.hasNext()) {
+
+                Product p = (Product)it.next();
+                out.println("<div class=\"col-sm-4\">");
+                out.println("<div class=\"card\">");
+                out.println("<div class=\"card-body\">");
+                out.println("<h5 class=\"card-title\">" + p.getName() + "</h5>");
+                out.println("<p class=\"card-text\">" + p.getShortDesc() + "</p>");
+                out.println("< href=\"detailsView.jsp\" class=\"btn btn-primary\" >Details</a></div></div></div>");
+            }
 
 
-
-
-
-        <%--<div class="col-sm-4">--%>
-          <%--<div class="card">--%>
-            <%--<div class="card-body">--%>
-              <%--<h5 class="card-title">Brass Knob</h5>--%>
-              <%--<p class="card-text">A knob made of premium brass</p>--%>
-              <%--<a href="detailsView.jsp" class="btn btn-primary">Details</a>--%>
-            <%--</div>--%>
-          <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="col-sm-4">--%>
-          <%--<div class="card">--%>
-            <%--<div class="card-body">--%>
-              <%--<h5 class="card-title">Glass Knob</h5>--%>
-              <%--<p class="card-text">A luxurious glass knob</p>--%>
-              <%--<a href="detailsView.jsp" class="btn btn-primary">Details</a>--%>
-            <%--</div>--%>
-          <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="col-sm-4">--%>
-            <%--<div class="card">--%>
-              <%--<div class="card-body">--%>
-                <%--<h5 class="card-title">Stainless Steel Knob</h5>--%>
-                <%--<p class="card-text">A sleek modern knob</p>--%>
-                <%--<a href="detailsView.jsp" class="btn btn-primary">Details</a>--%>
-              <%--</div>--%>
-            <%--</div>--%>
-          <%--</div>--%>
+        %>
       </div>
     </main>
   </body>
