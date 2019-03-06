@@ -5,13 +5,17 @@ import Models.Product;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class DetailController {
-    private String RESULT_PAGE = "productsView.jsp";
+public class DetailController extends HttpServlet {
+    private String RESULT_PAGE = "detailsView.jsp";
 
 
 
@@ -24,9 +28,15 @@ public class DetailController {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         Inventory inv = new Inventory();
-        Product product = Inventory
-
-        req.setAttribute("productList", productList);
+        Iterator<Product> it = inv.getProductList().iterator();
+        Product product = new Product();
+        while (it.hasNext()){
+            Product p = it.next();
+            if(p.getName().equals(URLDecoder.decode(req.getParameter("product"),"UTF-8"))){
+                product = p;
+            }
+        }
+        req.setAttribute("product", product);
         RequestDispatcher dispatcher = req.getRequestDispatcher(RESULT_PAGE);
         dispatcher.forward(req,resp);
     }

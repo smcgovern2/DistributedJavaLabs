@@ -7,11 +7,33 @@
     <servlet>
         <servlet-name>ProductController</servlet-name>
         <servlet-class>Controllers.ProductController</servlet-class>
-
     </servlet>
-
     <servlet-mapping>
         <servlet-name>ProductController</servlet-name>
-        <url-pattern>/productsView</url-pattern>
+        <url-pattern>/ProductsController</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DetailController</servlet-name>
+        <servlet-class>Controllers.DetailController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DetailController</servlet-name>
+        <url-pattern>/DetailController</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>Controllers.CartController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/CartController</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>QuantityController</servlet-name>
+        <servlet-class>Controllers.QuantityController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>QuantityController</servlet-name>
+        <url-pattern>/QuantityController</url-pattern>
     </servlet-mapping>
 </web-app>
