@@ -12,7 +12,7 @@
     <title>Dirty Dan's Discount Doorknobs</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -40,6 +40,14 @@
         <h1 class="display-4">Products</h1>
         <p class="lead">Dirty Dan is offering a wide selection of discount doorknobs</p>
     </div>
+
+
+        <form class="form-inline col-sm-12 my-sm-3">
+            <input class="form-control col-sm-10" id="search" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+
     <div class="row">
         
         <%
@@ -69,8 +77,22 @@
             }
 
 
+
+
         %>
       </div>
     </main>
   </body>
 </html>
+<script>
+    $(document).ready(function() {
+        $(document).on('click','#search',function(){
+            $.post("SearchController", {filterTerm: $(this).val()})
+        });
+
+        $("#btnHidden").on('click', function() {
+            $('#txtFocus').blur();
+        });
+    });
+
+</script>

@@ -34,22 +34,32 @@
 
     <main role="main" class="container">
       <h3>My Cart</h3>
-      <form action="javascript:void(0);">
+
+      <div class="list-group">
             <%
               Cart cart = (Cart)request.getSession().getAttribute("Cart");
               if (cart != null) {
                 for (ProductQtyPair pqp : cart.getProductQtyList()) {
                   if(pqp.getQuantity()!=0) {
-                    out.print("<div class=\"list-group-item form-inline col-md-12\">" + pqp.getProduct().getName());
-                    out.print("<a href=\"DeleteController?product=" + URLEncoder.encode(pqp.getProduct().getName()) + "\"><button type=\"button\" class=\"btn btn-danger col-md-1 float-right\">Remove</button></a>");
-                    out.print("<input class=\"qtyField form-control col-md-1 float-right\" type=\"text\"  id=\"" + URLEncoder.encode(pqp.getProduct().getName(), "UTF-8") + "Qty\" placeholder=\"" + pqp.getQuantity() + "\">");
-                    out.print("<label for=\"" + URLEncoder.encode(pqp.getProduct().getName(), "UTF-8") + "Qty\" class=\"col-md-1 float-right\">Quantity:</label></div>");
+                    out.print("<div class=\"list-group-item\">");
+                    out.print("<form class=\"form-inline\" action=\"javascript:void(0);\">");
+                    out.print("<div class=\" form-group form col-sm-8 h4\">" + pqp.getProduct().getName() + "</div>");
+                    out.print("<div class=\"input-group col-sm-4\">");
+                    out.print("<label for=\"" + URLEncoder.encode(pqp.getProduct().getName(), "UTF-8") + "Qty\" class=\"mx-sm-1 \">Quantity:</label>");
+                    out.print("<input class=\"qtyField form-control mx-sm-1 \" type=\"text\"  id=\"" + URLEncoder.encode(pqp.getProduct().getName(), "UTF-8") + "Qty\" placeholder=\"" + pqp.getQuantity() + "\">");
+                    out.print("<a href=\"DeleteController?product=" + URLEncoder.encode(pqp.getProduct().getName(),"UTF-8") + "\"><button type=\"button\" class=\"btn btn-danger mx-sm-1\">Remove</button></a>");
+                    out.print("</div>");
+                    out.print("<input type=\"submit\" style=\"display:none;\" id=\"btnHidden\">");
+                    out.print("</form>");
+                    out.print("</div>");
+
                   }
                 }
               }
             %>
-        <input type="submit" style="display:none;" id="btnHidden">
-      </form>
+      </div>
+
+
     </main>
   </body>
 </html>

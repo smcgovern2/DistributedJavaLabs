@@ -38,9 +38,10 @@ public class DeleteController extends HttpServlet {
                 cartList.get(i).setQuantity(0);
             }
         }
+
         cart.setProductQtyList(cartList);
+        req.setAttribute("removal", true);
         session.setAttribute("Cart", cart );
-        req.setAttribute("product", null);
         RequestDispatcher dispatcher = req.getRequestDispatcher(RESULT_PAGE);
         dispatcher.forward(req,resp);
 

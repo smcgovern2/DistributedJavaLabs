@@ -37,8 +37,13 @@ public class CartController extends HttpServlet {
         if (session.getAttribute("Cart") == null) {
             session.setAttribute("Cart", new Cart());
         }
+        boolean isRemoval = false;
+        if(req.getAttribute("removal") != null && (boolean)req.getAttribute("removal")){
+            isRemoval = true;
+        }
 
-        if(req.getParameter("product")!= null) {
+
+        if(req.getParameter("product")!= null && !isRemoval) {
            String productName = req.getParameter("product");
 
             Cart cart = (Cart) session.getAttribute("Cart");
