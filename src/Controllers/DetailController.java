@@ -30,13 +30,7 @@ public class DetailController extends HttpServlet {
         Inventory inv = new Inventory();
         Iterator<Product> it = inv.getProductList().iterator();
         Product product = new Product();
-        while (it.hasNext()){
-            Product p = it.next();
-            if(p.getName().equals(URLDecoder.decode(req.getParameter("product"),"UTF-8"))){
-                product = p;
-            }
-        }
-        req.setAttribute("product", product);
+        product = CartController.getProduct(req, it, product);
         RequestDispatcher dispatcher = req.getRequestDispatcher(RESULT_PAGE);
         dispatcher.forward(req,resp);
     }

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class QuantityController extends HttpServlet {
-    private String RESULT_PAGE = "CartController";
+    private String RESULT_PAGE = "/CartController";
 
 
 
@@ -41,16 +41,14 @@ public class QuantityController extends HttpServlet {
         ProductQtyPair newPair = new ProductQtyPair(product,newQuantity);
         Cart cart = (Cart)session.getAttribute("Cart");
         ArrayList<ProductQtyPair> cartList = cart.getProductQtyList();
-        Iterator<ProductQtyPair> itr = cartList.iterator();
-        while (itr.hasNext()){
-            ProductQtyPair pqp = itr.next();
-            if(pqp.getProduct().getName().equals(productName)) {
-                cartList.remove(pqp);
+        for(int i = 0; i<cartList.size(); i++){
+            if(cartList.get(i).getProduct().getName().equals(productName)) {
+                cartList.set(i,newPair);
             }
         }
-        cartList.add(newPair);
         cart.setProductQtyList(cartList);
         session.setAttribute("Cart", cart );
+        req.setAttribute("product", null);
         RequestDispatcher dispatcher = req.getRequestDispatcher(RESULT_PAGE);
         dispatcher.forward(req,resp);
 

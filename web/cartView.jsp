@@ -34,34 +34,36 @@
 
     <main role="main" class="container">
       <h3>My Cart</h3>
-      <form>
-
+      <form action="javascript:void(0);">
             <%
               Cart cart = (Cart)request.getSession().getAttribute("Cart");
               if (cart != null) {
                 for (ProductQtyPair pqp : cart.getProductQtyList()) {
-                  out.print("<div class=\"list-group-item form-inline col-md-12\">" + pqp.getProduct().getName());
-                  out.print("<button type=\"button\" class=\"btn btn-danger col-md-1 float-right\">Remove</button>");
-                  out.print("<input class=\"qtyField form-control col-md-1 float-right\" type=\"text\"  id=\"" + URLEncoder.encode(pqp.getProduct().getName(),"UTF-8") + "Qty\" placeholder=\"" + pqp.getQuantity() + "\">");
-                  out.print("<label for=\"" + URLEncoder.encode(pqp.getProduct().getName(),"UTF-8") + "Qty\" class=\"col-md-1 float-right\">Quantity:</label></div>");
+                  if(pqp.getQuantity()!=0) {
+                    out.print("<div class=\"list-group-item form-inline col-md-12\">" + pqp.getProduct().getName());
+                    out.print("<a href=\"DeleteController?product=" + URLEncoder.encode(pqp.getProduct().getName()) + "\"><button type=\"button\" class=\"btn btn-danger col-md-1 float-right\">Remove</button></a>");
+                    out.print("<input class=\"qtyField form-control col-md-1 float-right\" type=\"text\"  id=\"" + URLEncoder.encode(pqp.getProduct().getName(), "UTF-8") + "Qty\" placeholder=\"" + pqp.getQuantity() + "\">");
+                    out.print("<label for=\"" + URLEncoder.encode(pqp.getProduct().getName(), "UTF-8") + "Qty\" class=\"col-md-1 float-right\">Quantity:</label></div>");
+                  }
                 }
               }
             %>
-
+        <input type="submit" style="display:none;" id="btnHidden">
       </form>
     </main>
   </body>
 </html>
 <script>
 $(document).ready(function() {
-  alert("reloaded")
-  $(".qtyField").change(function(){
-    var qtyId = this.id;
-    qtyId = qtyId.replace("Qty", "")
-    var qty = this.value
-    alert("here")
-    var xhttp = new XMLHttpRequest();
+  $(document).on('change','.qtyField',function(){
+    var qtyId = $(this).attr('id');
+    qtyId = qtyId.replace("Qty", "");
+    var qty = $(this).val();
     $.post("QuantityController", {product: qtyId, quantity: qty})
+    });
+
+    $("#btnHidden").on('click', function() {
+        $('#txtFocus').blur();
     });
 });
 
