@@ -36,4 +36,13 @@
         <servlet-name>QuantityController</servlet-name>
         <url-pattern>/QuantityController</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteController</servlet-name>
+        <servlet-class>Controllers.DeleteController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteController</servlet-name>
+        <url-pattern>/DeleteController</url-pattern>
+    </servlet-mapping>
+
 </web-app>
