@@ -42,8 +42,8 @@
     </div>
 
 
-        <form class="form-inline col-sm-12 my-sm-3">
-            <input class="form-control col-sm-10" id="search" type="search" placeholder="Search" aria-label="Search">
+        <form action="SearchController" method="GET" class="form-inline col-sm-12 my-sm-3">
+            <input class="form-control col-sm-10" id="search" name="search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 

@@ -26,6 +26,16 @@ public class ProductController extends HttpServlet {
         resp.setContentType("text/html");
         Inventory inv = new Inventory();
         ArrayList<Product> productList = inv.getProductList();
+        if(req.getAttribute("search")!=null){
+            ArrayList<Product> filteredList = new ArrayList<>();
+            for (Product p : productList) {
+                if(p.getName().toLowerCase().contains(((String)req.getAttribute("search")).toLowerCase())){
+                    filteredList.add(p);
+                }
+            }
+            productList = filteredList;
+        }
+
 
         req.setAttribute("productList", productList);
         RequestDispatcher dispatcher = req.getRequestDispatcher(RESULT_PAGE);
