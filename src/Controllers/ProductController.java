@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.DBInventory;
 import Models.Inventory;
 import Models.Product;
 
@@ -24,7 +25,7 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        Inventory inv = new Inventory();
+        Inventory inv = DBInventory.getInstance();
         ArrayList<Product> productList = inv.getProductList();
         if(req.getAttribute("search")!=null){
             ArrayList<Product> filteredList = new ArrayList<>();

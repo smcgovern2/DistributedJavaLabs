@@ -1,5 +1,6 @@
 package Controllers;
 
+import Models.DBInventory;
 import Models.Inventory;
 import Models.Product;
 
@@ -9,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class DetailController extends HttpServlet {
@@ -27,7 +25,7 @@ public class DetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        Inventory inv = new Inventory();
+        Inventory inv = DBInventory.getInstance();
         Iterator<Product> it = inv.getProductList().iterator();
         Product product = new Product();
         product = CartController.getProduct(req, it, product);

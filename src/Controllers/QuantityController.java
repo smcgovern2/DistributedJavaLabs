@@ -1,9 +1,6 @@
 package Controllers;
 
-import Models.Cart;
-import Models.Inventory;
-import Models.Product;
-import Models.ProductQtyPair;
+import Models.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +21,7 @@ public class QuantityController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        Inventory inv = new Inventory();
+        Inventory inv = DBInventory.getInstance();
         String productName = URLDecoder.decode(req.getParameter("product"),"UTF-8");
         int newQuantity = Integer.parseInt(req.getParameter("quantity"));
         HttpSession session = req.getSession();

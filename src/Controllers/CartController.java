@@ -1,9 +1,6 @@
 package Controllers;
 
-import Models.Cart;
-import Models.Inventory;
-import Models.Product;
-import Models.ProductQtyPair;
+import Models.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,7 +57,7 @@ public class CartController extends HttpServlet {
                 }
             }
             if (!productExists) {
-                Inventory inv = new Inventory();
+                Inventory inv = DBInventory.getInstance();
                 for(int i = 0; i<inv.getProductList().size(); i++){
                     if(inv.getProductList().get(i).getName().equals(productName)) {
                         cartList.add(new ProductQtyPair(inv.getProductList().get(i), 1));

@@ -1,8 +1,6 @@
 package Controllers;
 
 import Models.Cart;
-import Models.Inventory;
-import Models.Product;
 import Models.ProductQtyPair;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class DeleteController extends HttpServlet {
 
